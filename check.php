@@ -1,8 +1,8 @@
 <?php
 
 $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
-$username = 'lawsadmission@gmail.com';
-$password = 'laws2021';
+$username = '';//enter your email here
+$password = ''; //enter your email password here
 
 //try to connect 
 $inbox = imap_open($hostname,$username,$password) or die('Cannot connect to Gmail: ' . imap_last_error());
@@ -21,7 +21,7 @@ foreach($emails as $email_number) {
 $headers =imap_fetch_overview($inbox, $email_number,0);
 
 $message=imap_fetchbody($inbox,$email_number,'1');
-$submessage=substr($message,0,150);
+$submessage=substr($message,0,700);
 $finalMessage=trim(quoted_printable_decode($submessage));
 
              include 'includes/config.php'; 
@@ -39,3 +39,8 @@ $finalMessage=trim(quoted_printable_decode($submessage));
         }
        
         imap_close($inbox);
+
+
+
+       // preg_match('#Amount:([ 0-9,.]*)#is', $msg, $matches);
+       // preg_match('#Ref:(.*)Bal#is', $msg, $matchRef);
