@@ -57,6 +57,15 @@ $finalMessage=trim(quoted_printable_decode($submessage));
 
             //} End foreach 
           
+    
+    
+    
+    
+       // preg_match('#Amount:([ 0-9,.]*)#is', $msg, $matches);
+       // preg_match('#Ref:(.*)Bal#is', $msg, $matchRef);
+    
+       // preg_match('#Amount:([ 0-9,.]*)#is', $msg, $matches);
+       // preg_match('#Ref:(.*)Bal#is', $msg, $matchRef);
         
             }
         
