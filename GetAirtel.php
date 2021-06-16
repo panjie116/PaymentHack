@@ -24,7 +24,7 @@ $message=imap_fetchbody($inbox,$email_number,'1');
 $submessage=substr($message,0,700);
 $finalMessage=trim(quoted_printable_decode($submessage));
 
-             require 'conn.php'; 
+             require './includes/config.php'; 
           
              //grab amount and reference number from email 
            preg_match_all('#Amount:([ 0-9,.]*)#is', $finalMessage, $matches);// change "#Amount" to "AMT" if you want to capture agent payments
@@ -47,9 +47,9 @@ $finalMessage=trim(quoted_printable_decode($submessage));
                     
            }
    
-           echo "Payment page";
+           echo "Enter reference number";
            
-           $sql= "INSERT INTO `payments`(`Amount`, `Reference`, `status`) VALUES ('$amount','$reference', 'new')";
+           $sql= "INSERT INTO `ndalama`(`Amount`, `Reference`, `status`) VALUES ('$amount','$reference', 'new')";
          
                 
                  mysqli_query($con, $sql);

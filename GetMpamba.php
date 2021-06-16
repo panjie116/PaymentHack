@@ -24,7 +24,7 @@ $message=imap_fetchbody($inbox,$email_number,'1');
 $submessage=substr($message,0,700);
 $finalMessage=trim(quoted_printable_decode($submessage));
 
-             require 'conn.php'; 
+             require './includes/config.php'; 
           
              //grab amount and reference number from email 
            preg_match_all('#Amount:([ 0-9,.]*)#is', $finalMessage, $matches);// change "#Amount" to "AMT" if you want to capture agent payments
@@ -47,28 +47,49 @@ $finalMessage=trim(quoted_printable_decode($submessage));
                     
            }
    
-           echo "Payment page";
+           echo "Enter reference number";
            
-           $sql= "INSERT INTO `payments`(`Amount`, `Reference`, `status`) VALUES ('$amount','$reference', 'new')";
+           $sql= "INSERT INTO `ndalama`(`Amount`, `Reference`, `status`) VALUES ('$amount','$reference', 'new')";
          
                 
                  mysqli_query($con, $sql);
    
 
-            //} End foreach 
-          
-    
-    
-    
-    
-       // preg_match('#Amount:([ 0-9,.]*)#is', $msg, $matches);
-       // preg_match('#Ref:(.*)Bal#is', $msg, $matchRef);
-    
-       // preg_match('#Amount:([ 0-9,.]*)#is', $msg, $matches);
-       // preg_match('#Ref:(.*)Bal#is', $msg, $matchRef);
+            
         
             }
         
         }
        
         imap_close($inbox);
+
+
+        ?>
+
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+
+        <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+         <link rel="stylesheet" type="text/css" href="./css/main.css">
+    </head>
+    <body>
+
+         <form>
+              <div class="form-group row">
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" placeholder="reference number" id="inputRef">
+                </div>
+              </div>
+               <button type="button" class="btn btn-primary">Confirm payment</button>
+        </form>
+
+    </body>
+
+
+<script href="./js/jquery.min.css" ></script>
+
+    </html>
