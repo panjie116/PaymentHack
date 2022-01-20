@@ -1,8 +1,8 @@
 <?php
 
 $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
-$username = 'lawsadmission@gmail.com'; //your email here
-$password = 'laws2021'; // your password here
+$username = ''; //your email here
+$password = ''; // your password here
 
 //try to connect 
 $inbox = imap_open($hostname,$username,$password) or die('Cannot connect to Gmail: ' . imap_last_error());
